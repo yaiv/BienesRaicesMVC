@@ -7,6 +7,7 @@ use MVC\Router;
 use Controllers\PropiedadController;
 use Controllers\VendedorController;
 use Controllers\PaginasController;
+use Controllers\ArticuloController;
 
 $router = new Router();
 
@@ -24,6 +25,14 @@ $router->post('/vendedores/crear', [VendedorController::class, 'crear']);
 $router->get('/vendedores/actualizar', [VendedorController::class, 'actualizar']);
 $router->post('/vendedores/actualizar', [VendedorController::class, 'actualizar']);
 $router->post('/vendedores/eliminar', [VendedorController::class, 'eliminar']);
+
+$router->get('/articulos/crear', [ArticuloController::class, 'crear']);
+$router->post('/articulos/crear', [ArticuloController::class, 'crear']);
+$router->get('/articulos/actualizar', [ArticuloController::class, 'actualizar']);
+$router->post('/articulos/actualizar', [ArticuloController::class, 'actualizar']);
+$router->post('/articulos/eliminar', [ArticuloController::class, 'eliminar']);
+
+
 
 //Zona publica
 $router->get('/', [PaginasController::class, 'index']);

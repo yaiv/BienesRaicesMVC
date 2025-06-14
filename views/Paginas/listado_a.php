@@ -15,7 +15,7 @@
                     <h4><?php echo s($articulo->titulo); ?></h4>
                     <p class="informacion-meta">Escrito el: <span><?php echo s($articulo->fecha); ?></span> por: <span><?php echo s($articulo->autor); ?></span> </p>
                     <p>
-                        <?php echo s(substr($articulo->contenido, 0, 200)) . '...'; ?>
+                        <?php echo s(substr($articulo->contenido, 0, 100)) . '...'; ?>
                     </p>
                 </a>
             </div>
