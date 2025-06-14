@@ -4,6 +4,7 @@ namespace Controllers;
 use MVC\Router;
 use Model\Propiedad;
 use Model\Vendedor;
+use Model\Articulo;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager as Image;
 
@@ -14,6 +15,7 @@ class PropiedadController {
         
         $propiedades = Propiedad::all();
         $vendedores = Vendedor::all();
+        $articulos = Articulo::all();
 
     //Muestra mensaje condicional
     $resultado = $_GET['resultado'] ?? null; //Se revisa que hay un get si no se muestra nada 
@@ -22,7 +24,8 @@ class PropiedadController {
         $router->render('propiedades/admin', [
             'propiedades' => $propiedades, 
             'resultado' => $resultado,
-            'vendedores' => $vendedores
+            'vendedores' => $vendedores,
+            'articulos' => $articulos
             
         ]);
     }
