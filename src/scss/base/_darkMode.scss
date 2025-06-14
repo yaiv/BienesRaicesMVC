@@ -10,12 +10,21 @@
 
     a, h1, h2, h3, h4{
         color: v.$gris;
+        font-family: v.$fuente_principal;
+        font-size: 900;
+        font-weight: v.$bold;
     }
 
     .anuncio, 
     .resumen-propiedad {
-        background-color: v.$grisOscuro;
-        border: 1px solid v.$grisOscuro;
+        background-color: color.adjust(v.$grisOscuro, $lightness: 9.5%);
+        font-weight: 500;
+        .titulos{
+            font-weight: v.$bold;
+            font-size: 900;
+            font-family: v.$fuente_principal;
+            
+        }
         .precio {
             color: v.$verde;
         }
