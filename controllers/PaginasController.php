@@ -4,16 +4,19 @@ namespace Controllers;
 
 use MVC\Router;
 use Model\Propiedad;
+use Model\Articulo;
 
 
 class PaginasController {
     public static function index ( Router $router ){
 
         $propiedades = Propiedad::get(3);
+        $articulos = Articulo::get(2);
         $inicio = true;
 
         $router->render('paginas/index', [
             'propiedades' => $propiedades,
+            'articulos' => $articulos,
             'inicio' => $inicio
 
         ]);
@@ -47,11 +50,21 @@ class PaginasController {
     }
 
         public static function blog ( Router $router ){
-            $router->render('paginas/blog');
+            $articulos = Articulo::all();
+            $router->render('paginas/blog', [
+                'articulos' => $articulos
+            ]);
     }
 
         public static function entrada ( Router $router ){
-            $router->render('paginas/entrada');
+            $id = validarORedireccionar('/blog');
+            
+            //Buscar el artículo por su id
+            $articulo = Articulo::find($id);
+            
+            $router->render('paginas/entrada', [
+                'articulo' => $articulo
+            ]);
     }
 
         public static function contacto ( ){

@@ -135,6 +135,7 @@ class ArticuloController {
                     if(validarTipoContenido($tipo)){
                         $articulo = Articulo::find($id);
                         $articulo->eliminar();
+                        header('Location: /admin?resultado=3');
                    }    
                  }
            }

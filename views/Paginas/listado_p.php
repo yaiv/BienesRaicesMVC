@@ -5,7 +5,7 @@
                     <img class="img-anuncios" src="/imagenes/<?php echo $propiedad->imagen;?>" alt="anuncio">
                 
                 <div class="contenido-anuncio">
-                    <h3><?php echo $propiedad->titulo;?></h3>
+                    <h4 class="titulos"><?php echo $propiedad->titulo;?></h4>
                     <p><?php echo $propiedad->descripcion;?></p>
                     <p class="precio">$<?php echo $propiedad->precio;?></p>
 
