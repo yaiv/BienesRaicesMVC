@@ -14,7 +14,7 @@
     <input type="file" id="imagen" name="articulo[imagen]" accept="image/jpeg, image/png">
 
     <?php if($articulo->imagen): ?>
-        <img src="/imagenes_articulos/<?php echo $articulo->imagen ?>" class="imagen-small">
+        <img src="/imagenes/<?php echo $articulo->imagen ?>" class="imagen-small">
     <?php endif; ?>
 
     <label for="contenido">Contenido:</label>

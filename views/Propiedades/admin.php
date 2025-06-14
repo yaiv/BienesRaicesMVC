@@ -115,14 +115,14 @@
         <tr>
             <td> <?php echo $articulo->id; ?> </td>
             <td> <?php echo $articulo->titulo; ?> </td>
-            <td> <img src="/imagenes/<?php echo $propiedad->imagen; ?>" class="imagen-tabla"> </td>
+            <td> <img src="/imagenes/<?php echo $articulo->imagen; ?>" class="imagen-tabla"> </td>
             <td> <?php echo $articulo->autor; ?> </td>
             <td>
                 <form method="POST" class="w-100" action="/articulos/eliminar">
 
                     <input type="hidden" name="id" value="<?php echo $articulo->id; ?>" >
 
-                    <input type="hidden" name="tipo" value="autor" >
+                    <input type="hidden" name="tipo" value="articulo" >
 
 
                     <input type="submit" class="boton-rojo-block" value="Eliminar">
