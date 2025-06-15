@@ -9,7 +9,15 @@ document.addEventListener('DOMContentLoaded', function(){
 function eventListeners(){
     const mobileMenu = document.querySelector ('.mobile-menu'); //Se eligue elemento del html   
     //Se da clic en mobileMenu -Se registra el click --Se manda a llamar la funcion 
-    mobileMenu.addEventListener('click', navegacionResponsive) //Cuando se de click en mobil menu se ejecuta la funcion 
+    mobileMenu.addEventListener('click', navegacionResponsive) ///Cuando se de click en mobil menu se ejecuta la funcion 
+
+    //Muestra campos condicionales 
+    const metodoContacto = document.querySelectorAll('input[name="contacto[contacto]"]');
+
+     metodoContacto.forEach(input=> input.addEventListener('click', mostrarMetodosContacto))
+     
+     // Restaurar campos condicionales si hay datos previos
+     restaurarCamposCondicionales();
  }
 
 //Se genera clase mostrar al seleccionar la navegacion en responsi
@@ -24,12 +32,57 @@ function eventListeners(){
     }    
  }
 
+ function mostrarMetodosContacto( e ){
+    const contactoDiv = document.querySelector('#contacto');
+    
+    if(e.target.value === 'telefono') {
+        contactoDiv.innerHTML = `
+                <label for="telefono">Teléfono</label>
+                <input type="tel" placeholder="Tu Teléfono" id="telefono" name="contacto[telefono]" required>
+                
+                <p>Elija la fecha y la hora para la llamada</p>
 
- //tambien se puede realizar de otra manera mediante un 
-//  function navegacionResponsive() {
-//     const navegacion = document.querySelector ('.navegacion') //Se eligue elemento del html 
-//     navegacion.classList.toggle('mostrar') //Si se tiene la clase la elimina y si no la tiene la crea 
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="contacto[fecha]" required>
 
+                <label for="hora">Hora:</label>
+                <input type="time" id="hora" min="09:00" max="18:00" name="contacto[hora]" required>
+        `;
+    }  else {
+        contactoDiv.innerHTML = `
+                <label for="email">E-mail</label>
+                <input type="email" placeholder="Tu Email" id="email" name="contacto[email]" required>
+        `;
+    }
+    
+}
+
+function restaurarCamposCondicionales() {
+    const contactoDiv = document.querySelector('#contacto');
+    const radioTelefono = document.querySelector('input[value="telefono"]');
+    const radioEmail = document.querySelector('input[value="email"]');
+    
+    // Verificar si hay un radio button seleccionado
+    if(radioTelefono && radioTelefono.checked) {
+        contactoDiv.innerHTML = `
+                <label for="telefono">Teléfono</label>
+                <input type="tel" placeholder="Tu Teléfono" id="telefono" name="contacto[telefono]" required>
+                
+                <p>Elija la fecha y la hora para la llamada</p>
+
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="contacto[fecha]" required>
+
+                <label for="hora">Hora:</label>
+                <input type="time" id="hora" min="09:00" max="18:00" name="contacto[hora]" required>
+        `;
+    } else if(radioEmail && radioEmail.checked) {
+        contactoDiv.innerHTML = `
+                <label for="email">E-mail</label>
+                <input type="email" placeholder="Tu Email" id="email" name="contacto[email]" required>
+        `;
+    }
+}
 
 //Boton para DARK MODE 
 
